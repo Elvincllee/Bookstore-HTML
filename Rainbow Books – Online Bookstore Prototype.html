@@ -1,0 +1,95 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rainbow Books – Books at the end of the rainbow</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap">
+<style>
+:root{--bg:#efede9;--card:#f8f7f4;--fg:#1d1c1a;--mut:#6b6862;--line:#d8d5ce;--acc:#8a5a3b;--btn:#1d1c1a;--btnfg:#f8f7f4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171614;--card:#201f1c;--fg:#ece9e3;--mut:#9b978f;--line:#34322e;--acc:#d09a74;--btn:#ece9e3;--btnfg:#171614}}
+:root[data-theme="dark"]{--bg:#171614;--card:#201f1c;--fg:#ece9e3;--mut:#9b978f;--line:#34322e;--acc:#d09a74;--btn:#ece9e3;--btnfg:#171614}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;margin:0;line-height:1.1}
+header{display:flex;align-items:center;justify-content:space-between;padding:28px 6vw;flex-wrap:wrap;gap:12px}
+.logo{font:600 26px "Cormorant Garamond",Georgia,serif;cursor:pointer;letter-spacing:.02em}
+.logo i{display:block;height:2px;margin-top:2px;background:linear-gradient(90deg,#b5553c,#d9a441,#6f9a6b,#4f7fa8,#8a6fa8)}
+nav{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+nav a,.lnk{background:none;border:0;color:var(--fg);font:inherit;font-size:14px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:10px 0;min-height:44px}
+nav a.on{border-bottom:1px solid var(--fg)}
+main{padding:0 6vw 80px;max-width:1200px;margin:0 auto}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 0 60px;gap:20px}
+.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc)}
+.cv{aspect-ratio:2/3;width:100%;border-radius:2px 6px 6px 2px;display:flex;flex-direction:column;justify-content:space-between;padding:12%;color:#f6f3ec;box-shadow:0 18px 40px -18px rgba(0,0,0,.45),inset 4px 0 0 rgba(255,255,255,.12);font-family:"Cormorant Garamond",Georgia,serif;text-align:left}
+.cv b{font-weight:600;font-size:1.5em;line-height:1.05}.cv span{font-size:.8em;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.big{width:min(260px,60vw)}.big .cv{font-size:20px}
+.btn{background:var(--btn);color:var(--btnfg);border:1px solid var(--btn);padding:0 28px;min-height:48px;font:500 14px "DM Sans",sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:2px}
+.btn.o{background:none;color:var(--fg);border-color:var(--fg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:36px 28px;margin-top:28px}
+.bk{cursor:pointer}.bk .cv{font-size:14px}.bk h3{font-size:20px;margin-top:12px}.bk p{margin:2px 0;color:var(--mut);font-size:14px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:24px 0}
+.pill{border:1px solid var(--line);background:none;color:var(--fg);padding:0 16px;min-height:44px;border-radius:22px;font:inherit;font-size:14px;cursor:pointer}.pill.on{background:var(--fg);color:var(--bg)}
+input,select{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--line);padding:0 12px;min-height:46px;border-radius:2px;width:100%}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.col{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px}
+.box{background:var(--card);border:1px solid var(--line);padding:24px;border-radius:2px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.det{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:56px;padding-top:20px}
+.sec{margin-top:70px}.mut{color:var(--mut)}
+.badge{color:var(--acc);font-size:13px}
+@media(max-width:760px){.det,.col,.two{grid-template-columns:1fr;gap:28px}header{padding:20px 6vw}}
+footer{border-top:1px solid var(--line);padding:32px 6vw;color:var(--mut);font-size:13px;text-align:center}
+</style></head><body>
+<header><div class="logo" onclick="go('home')">Rainbow Books<i></i></div>
+<nav><a id="n-home" onclick="go('home')" href="#">Home</a><a id="n-shop" onclick="go('shop')" href="#">Shop</a><a id="n-events" onclick="go('events')" href="#">Events</a><a id="n-cart" onclick="go('cart')" href="#">Cart (0)</a></nav></header>
+<main id="app"></main>
+<footer>Rainbow Books · Since 1946 · Collins St, Melbourne · This is a student prototype: no payments are processed.</footer>
+<script>
+const B=[
+{id:1,t:"The Quiet Between Tides",a:"Veronica Watson",c:"Local Authors",p:32,x:"#33463f",y:"#6b8a7a",d:"A lighthouse keeper's daughter returns to the Victorian coast to settle her father's estate and finds his letters. Published by Rainbow Books Publishing."},
+{id:2,t:"Maps of Almost",a:"Jonathan Croft",c:"Local Authors",p:29,x:"#5a3a2e",y:"#b07a55",d:"Essays on getting lost in Melbourne's laneways, by a Rainbow Books Publishing author."},
+{id:3,t:"Salt & Paper",a:"Mira Delacroix",c:"Fiction",p:27,x:"#27384f",y:"#6f86a8",d:"A restless translator trades cities for a year of quiet letters."},
+{id:4,t:"The Slow Shelf",a:"Anna Okafor",c:"Non-fiction",p:35,x:"#4a4237",y:"#a89877",d:"Why reading in a physical bookshop still matters, and how to build a library that lasts."},
+{id:5,t:"Fox & the Lantern",a:"Lee Hartnett",c:"Children",p:19,x:"#8a4b2f",y:"#e0a56a",d:"A gentle picture book about a fox who lights the way home. Ages 4 to 7."},
+{id:6,t:"Orchard Hours",a:"Tomas Ruiz",c:"Fiction",p:26,x:"#4b3a55",y:"#9b84a8",d:"One summer, one orchard and three generations of secrets."},
+{id:7,t:"A Field Guide to Wattle",a:"Dr R. Pell",c:"Non-fiction",p:42,x:"#3d4a2c",y:"#9aab6c",d:"An illustrated guide to Victoria's native acacias."},
+{id:8,t:"The Moon Library",a:"Priya Nair",c:"Children",p:18,x:"#1f2c4a",y:"#5a73a8",d:"Every night the moon opens a library for sleepy animals. Ages 3 to 6."}];
+const STORES=["Collins Street, Melbourne","Eastpoint, Bayswater","Chadstone","Geelong"];
+const EV=[{id:1,t:"Author signing: Veronica Watson",w:"Sat 24 Oct, 2:00pm",s:"Collins Street"},{id:2,t:"Book club night: Salt & Paper",w:"Thu 29 Oct, 6:30pm",s:"Eastpoint, Bayswater"},{id:3,t:"Print-on-demand demo for self-published authors",w:"Sat 7 Nov, 11:00am",s:"Collins Street"}];
+let cart=[],cat="All",q="",booked={},ord=null,app=document.getElementById("app");
+const $=n=>document.getElementById(n),M=n=>"$"+n.toFixed(2);
+const pr=(b,f)=>f=="E-book"?b.p-8:f=="Hardcover"?b.p+12:b.p;
+const cov=b=>`<div class="cv" style="background:linear-gradient(155deg,${b.x},${b.y})"><span>${b.a}</span><b>${b.t}</b></div>`;
+const sub=()=>cart.reduce((s,i)=>s+pr(B[i.id-1],i.f)*i.q,0);
+const allE=()=>cart.length&&cart.every(i=>i.f=="E-book");
+function go(v,id){window.scrollTo(0,0);["home","shop","events","cart"].forEach(k=>$("n-"+k).className=(k==v?"on":""));$("n-cart").textContent="Cart ("+cart.reduce((s,i)=>s+i.q,0)+")";R[v](id);return false}
+function card(b){return `<div class="bk" onclick="go('book',${b.id})"><div>${cov(b)}</div><h3>${b.t}</h3><p>${b.a}</p><p>From ${M(pr(b,"E-book"))}</p></div>`}
+const R={
+home(){const b=B[0];app.innerHTML=`<section class="hero"><div class="eyebrow">Featured this month</div><div class="big" onclick="go('book',1)" style="cursor:pointer">${cov(b)}</div><h1 style="font-size:clamp(36px,6vw,64px)">${b.t}</h1><p class="mut" style="max-width:460px;margin:0">${b.d}</p><div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center"><button class="btn" onclick="go('book',1)">View book</button><button class="btn o" onclick="go('shop')">Browse the shop</button></div></section>
+<section class="sec"><h2 style="font-size:34px">New &amp; noteworthy</h2><div class="grid">${B.slice(1,5).map(card).join("")}</div></section>
+<section class="sec box" style="display:grid;gap:8px"><div class="eyebrow">Click &amp; collect</div><h2 style="font-size:30px">Order online, collect in store, free.</h2><p class="mut" style="margin:0">Pick up at any Rainbow Books store, and join our author signings and book clubs.</p><div><button class="btn o" onclick="go('events')">See events</button></div></section>`},
+shop(){const cats=["All","Fiction","Non-fiction","Children","Local Authors"];const l=B.filter(b=>(cat=="All"||b.c==cat)&&(b.t+b.a).toLowerCase().includes(q.toLowerCase()));
+app.innerHTML=`<h1 style="font-size:48px">Shop</h1><div class="bar">${cats.map(c=>`<button class="pill ${c==cat?"on":""}" onclick="cat='${c}';go('shop')">${c}</button>`).join("")}</div><input id="q" placeholder="Search by title or author" value="${q}" style="max-width:360px" oninput="q=this.value;fl()"><div class="grid" id="gl">${l.map(card).join("")||'<p class="mut">No books found.</p>'}</div>`},
+book(id){const b=B[id-1];app.innerHTML=`<div class="det"><div>${cov(b)}</div><div><div class="eyebrow">${b.c}</div><h1 style="font-size:clamp(34px,5vw,56px);margin:8px 0">${b.t}</h1><p class="mut">by ${b.a}</p><p>${b.d}</p>
+<label for="f">Format</label><select id="f" style="max-width:260px" onchange="$('pp').textContent=M(pr(B[${id-1}],this.value))"><option>Paperback</option><option>Hardcover</option><option>E-book</option></select>
+<p style="font-size:28px;font-family:'Cormorant Garamond',serif;margin:16px 0" id="pp">${M(b.p)}</p><p class="badge">In stock · Available for click &amp; collect</p><button class="btn" onclick="add(${id},$('f').value)">Add to cart</button> <button class="btn o" onclick="go('shop')">Back</button></div></div>`},
+events(){app.innerHTML=`<h1 style="font-size:48px">In-store events</h1><p class="mut">Author signings, book clubs and workshops, free to attend.</p>${EV.map(e=>`<div class="row" style="align-items:center;flex-wrap:wrap"><div><h3 style="font-size:24px">${e.t}</h3><span class="mut">${e.w} · ${e.s}</span></div><button class="btn ${booked[e.id]?"o":""}" onclick="booked[${e.id}]=1;go('events')">${booked[e.id]?"Booked":"Reserve a spot"}</button></div>`).join("")}`},
+cart(){if(!cart.length){app.innerHTML=`<h1 style="font-size:48px">Your cart</h1><p class="mut">Your cart is empty.</p><button class="btn" onclick="go('shop')">Browse the shop</button>`;return}
+app.innerHTML=`<h1 style="font-size:48px">Your cart</h1><div class="col" style="margin-top:24px"><div>${cart.map((i,k)=>{const b=B[i.id-1];return `<div class="row" style="align-items:center"><div><b>${b.t}</b><br><span class="mut">${i.f} · ${b.a}</span></div><div style="display:flex;gap:8px;align-items:center"><button class="pill" onclick="qty(${k},-1)">−</button>${i.q}<button class="pill" onclick="qty(${k},1)">+</button> <span style="min-width:70px;text-align:right">${M(pr(b,i.f)*i.q)}</span></div></div>`}).join("")}</div>
+<div class="box"><div class="row"><span>Subtotal</span><span>${M(sub())}</span></div><p class="mut" style="font-size:14px">Delivery or collection is chosen at checkout.</p><button class="btn" style="width:100%" onclick="go('checkout')">Checkout</button></div></div>`},
+checkout(){const e=allE();app.innerHTML=`<h1 style="font-size:48px">Checkout</h1><div class="col" style="margin-top:24px"><div>
+<h3 style="font-size:26px;margin-bottom:12px">Your details</h3><div class="two"><div><label for="nm">Full name</label><input id="nm"></div><div><label for="em">Email</label><input id="em" type="email"></div></div>
+${e?'<p class="mut">E-books are delivered to your email.</p>':`<h3 style="font-size:26px;margin:28px 0 12px">Delivery</h3><label for="fu">Method</label><select id="fu" onchange="fu()"><option value="c">Click &amp; collect (free)</option><option value="p">Standard post (${M(8)}, free over $60)</option></select>
+<div id="st" style="margin-top:12px"><label for="sto">Collect from</label><select id="sto">${STORES.map(s=>`<option>${s}</option>`).join("")}</select></div><div id="ad" style="display:none;margin-top:12px"><label for="adr">Street address</label><input id="adr"><div class="two" style="margin-top:12px"><div><label for="sb">Suburb</label><input id="sb"></div><div><label for="pc">Postcode</label><input id="pc"></div></div></div>`}
+<h3 style="font-size:26px;margin:28px 0 12px">Payment</h3><label for="cn">Card number</label><input id="cn" inputmode="numeric" placeholder="0000 0000 0000 0000"><div class="two" style="margin-top:12px"><div><label for="ex">Expiry</label><input id="ex" placeholder="MM/YY"></div><div><label for="cv">CVC</label><input id="cv" placeholder="123"></div></div>
+<p class="mut" style="font-size:13px">Prototype only: card details are not checked or stored.</p></div>
+<div class="box" style="align-self:start">${cart.map(i=>`<div class="row"><span>${B[i.id-1].t} × ${i.q}</span><span>${M(pr(B[i.id-1],i.f)*i.q)}</span></div>`).join("")}<div class="row"><span>Delivery</span><span id="sh">${M(0)}</span></div><div class="row"><b>Total</b><b id="tt">${M(sub())}</b></div><p id="er" style="color:#b5553c;font-size:14px"></p><button class="btn" style="width:100%" onclick="pay()">Pay now</button></div></div>`},
+done(){app.innerHTML=`<section class="hero"><div class="eyebrow">Thank you</div><h1 style="font-size:clamp(34px,5vw,56px)">Order confirmed</h1><p class="mut">Order <b>${ord.n}</b> · ${ord.m}<br>A confirmation has been sent to ${ord.e}.</p><p>Total paid: <b>${M(ord.t)}</b></p><button class="btn" onclick="go('home')">Back to home</button></section>`}};
+function fl(){const l=B.filter(b=>(cat=="All"||b.c==cat)&&(b.t+b.a).toLowerCase().includes(q.toLowerCase()));$("gl").innerHTML=l.map(card).join("")||'<p class="mut">No books found.</p>'}
+function add(id,f){const x=cart.find(i=>i.id==id&&i.f==f);x?x.q++:cart.push({id,f,q:1});go("cart")}
+function qty(k,d){cart[k].q+=d;if(cart[k].q<1)cart.splice(k,1);go("cart")}
+const ship=()=>{const f=$("fu");return f&&f.value=="p"&&sub()<60?8:0};
+function fu(){const p=$("fu").value=="p";$("st").style.display=p?"none":"block";$("ad").style.display=p?"block":"none";$("sh").textContent=M(ship());$("tt").textContent=M(sub()+ship())}
+function pay(){const n=$("nm").value.trim(),e=$("em").value.trim(),c=$("cn").value.replace(/\s/g,"");if(!n||!e||c.length<12){$("er").textContent="Please enter your name, email and card number.";return}
+const f=$("fu"),m=allE()?"E-book delivery by email":f.value=="p"?"Posted to "+($("adr").value||"your address"):"Collect from "+$("sto").value;
+ord={n:"RB-"+Math.floor(10000+Math.random()*89999),e,m,t:sub()+ship()};cart=[];go("done")}
+go("home");
+</script></body></html>
